@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="bluetoothlesmartcharger.ramk.com.blesmartcharger1">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon_sample1"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".UI.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.MyNoActionBar">
+
+        </activity>
+        <activity
+            android:name=".UI.SettingsActivity"
+            android:theme="@style/AppTheme.MyNoActionBar"/>
+        <activity
+            android:name=".UI.DeviceListActivity"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".UI.HelpActivity"
+            android:theme="@style/AppTheme.MyNoActionBar" />
+
+        <!-- <receiver android:name=".Background.BatteryLevelReceiver"> -->
+        <!-- <intent-filter android:priority="900"> -->
+        <!-- <action android:name="android.intent.action.ACTION_POWER_CONNECTED" /> -->
+        <!-- <action android:name="android.intent.action.BATTERY_CHANGED" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+
+        <service android:name=".Background.BatteryLevelService" />
+        <service
+            android:name=".BluetoothService.BluetoothLeService"
+            android:enabled="true" />
+
+        <activity
+            android:name=".daemon.KeepLiveActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:finishOnTaskLaunch="false"
+            android:launchMode="singleInstance"
+            android:process=":process1"
+            android:theme="@style/LiveActivityStyle">
+            <intent-filter android:priority="1000">
+                <action android:name="bluetoothlesmartcharger.ramk.com.blesmartcharger1.keepLive" />
+            </intent-filter>
+        </activity>
+        <!-- <service android:name=".Background.BatteryLevelService"  /> -->
+        <!-- <service android:name=".BluetoothService.BluetoothLeService" -->
+        <!-- android:permission="true" -->
+        <!-- android:enabled="true" /> -->
+        <!--  -->
+        <receiver
+            android:name=".broad.KeepLiveReceiver"
+            android:process=":process1">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".daemon.Service1"
+            android:process=":process1">
+            <intent-filter android:priority="1000">
+                <action android:name="bluetoothlesmartcharger.ramk.com.blesmartcharger1.daemon.Service1" />
+            </intent-filter>
+        </service>
+        <!-- android:exported="true" -->
+        <!-- <category android:name="android.intent.category.DEFAULT"/> -->
+        <receiver
+            android:name=".daemon.Receiver1"
+            android:process=":process1" />
+
+        <service
+            android:name=".daemon.Service2"
+            android:process=":process2" />
+
+        <receiver
+            android:name=".daemon.Receiver2"
+            android:process=":process2" />
+
+        <activity android:name=".SplashActivity"
+            android:theme="@style/AppTheme.MyNoActionBar">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ImageSliderActivity"
+            android:theme="@style/AppTheme.MyNoActionBar"/>
+    </application>
+
+</manifest>

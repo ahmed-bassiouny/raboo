@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">raboo CHARGER&#174;</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_bluetooth">Bluetooth</string>
+    <string name="charging_threshold">Charging Discharging</string>
+    <string name="setting_device_name">Setting Device Name</string>
+    <string name="device_name_set">Device Name:</string>
+    <string name="setting">Change</string>
+    <string name="reading">Reading</string>
+    <string name="shared_prefs_name">battery_protection_prefs</string>
+    <string name="title_activity_help">Help</string>
+    <string name="mac_address">device_mac_address</string>
+    <string name="device_name">device_name</string>
+    <string name="ble_not_supported">BLE is not supported</string>
+    <string name="error_bluetooth_not_supported">Bluetooth not supported</string>
+
+    <string name="unknown_device">Unknown device</string>
+    <string name="unknown_characteristic">Unknown characteristic</string>
+    <string name="unknown_service">Unknown service</string>
+
+    <string name="app_help_text"> About Us&#58;\nraboo CHARGER&#174; has been provided to you by raboo Technologies Inc.&#174;\nraboo Technologies provides Innovative &#38; State&#45;of&#45;the&#45;art IOT solutions for your everyday life&#44; keeping in mind the current life style of people which means productivity&#44; efficiency&#44; connectivity&#44; SMART&#44; speed&#44; and social awareness.\nAbout raboo CHARGER&#174;&#58;\nraboo CHARGER&#174; is the SMARTEST cellphone charger that is ever made till date. It is intelligent reliable&#44; and above all connected and adaptable to the needs of its user&#40;s&#41;.\nraboo CHARGER&#174; charges the battery to full and once the battery is fully charged it stops charging. The battery starts discharging until it reaches a default threshold. When the threshold is touched&#44; our smart intelligent charger again starts charging till the battery is completely charged. In this way&#44; using our intelligent smartphone charger&#44; you can achieve following goals&#58;\n1.\tYour battery is always fully charged whenever you need it. \n2.\tYour battery is not on charge after reaching 100&#37; charging and hence your battery has a longer life as compared to others. \n3.\tElectrical energy is prevented from being wasted &#40;environmental friendly by reducing CO2 usage &#45; Green and healthy life&#41; \nSo now you can leave your smartphone on charging and sleep peacefully using our raboo CHARGER&#174;. At the morning get a fully charged smartphone with long battery life and much energy conserved.\nraboo CHARGER&#174; is designed to work with Android based devices as well as IOS devices. \nHow it works&#58; \nIt\'s pretty simple. Just buy our raboo CHARGER&#174; and from app store install raboo CHARGER&#174; Application. Now plug in the charger in socket and use cable to connect your smartphone with the charger. Once the LED indicator turns to Blue then your Device is connected to the charger. Once your device is connected then you can either use the default charging thresholds or you can define in the application at what point you want the charger to stop charging and on which point you want the charger to reconnect charging. As Simple as 1&#44; 2&#44; 3	&#33;\n\nraboo CHARGER&#174; All Rights Reserved 2016 \nraboo Technologies Inc. &#174; Brings SMART Attitude in to Your Life&#33;&#33;&#33;&#33;\n
+        \nFor more information please visit our website www.rabootec.com or send us an email at info@rabootec.com\n
+    </string>
+</resources>
