@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity
     private TextView title, subtitle;
     private TextView batteryPercentage;
     private TextView chargingDischarging;
-    private View batter_view, batter_total;
     private int batterTotalHeight=0;
     int batteryPct = 0;
     private boolean connectionTryStart;
@@ -127,11 +126,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         title = (TextView) findViewById(R.id.title);
         subtitle = (TextView) findViewById(R.id.subtitle);
-        batter_view = findViewById(R.id.batter_view);
-        batter_total = findViewById(R.id.batter_total);
         bluetooth = (ImageView) findViewById(R.id.bluetooth);
         String version = getResources().getString(R.string.app_name);
-        title.setText(version + "v" + getAppVersion());
+        title.setText(version);
         L.i(TAG, "onCreate");
         initExecutor();
         isLocationPermissionGranted();
@@ -301,15 +298,6 @@ public class MainActivity extends AppCompatActivity
 //        }, 0, 2, TimeUnit.SECONDS);
     }
 
-
-    private void setCharging(int percentage) {
-        if(percentage == 0 )
-            return;
-        int currentHeight1 = (percentage * batterTotalHeight) / 100;
-        //batter_view.setLayoutParams(new RelativeLayout.LayoutParams(width, currentHeight));
-        batter_view.getLayoutParams().height = currentHeight1;
-        batter_view.setVisibility(View.VISIBLE);
-    }
 
     private void getBattery(Context context) {
         L.w("Main ", " getBattery.........................");
@@ -552,14 +540,14 @@ public class MainActivity extends AppCompatActivity
                 if (isCharging) {
                     // chargingImage.setVisibility(View.VISIBLE);
                     if (bluetoothConnected) {
-                        chargingDischarging.setText("SMART CHARGING");
+                        chargingDischarging.setText("smart charging");
                     } else {
-                        chargingDischarging.setText("CHARGING");
+                        chargingDischarging.setText("charging");
 
                     }
                 } else {
                     // chargingImage.setVisibility(View.GONE);
-                    chargingDischarging.setText("DISCHARGING");
+                    chargingDischarging.setText("discharging");
                 }
                 if (bluetoothConnected) {
                     subtitle.setText("Connected with " + getString(app_name));
@@ -567,21 +555,7 @@ public class MainActivity extends AppCompatActivity
                     subtitle.setText("Not Connected");
                 }
 
-                //setChargingLevel(percentage);
-
-                if(batterTotalHeight == 0){
-                    final ViewTreeObserver observer= batter_total.getViewTreeObserver();
-                    observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-                        public boolean onPreDraw() {
-                            batter_total.getViewTreeObserver().removeOnPreDrawListener(this);
-                            batterTotalHeight = batter_total.getHeight();
-                            setCharging(percentage);
-                            return true;
-                        }
-                    });
-                }else {
-                    setCharging(percentage);
-                }
+                setChargingLevel(percentage);
 
 
             }
@@ -1569,7 +1543,7 @@ public class MainActivity extends AppCompatActivity
 //        }
     }
 
-    private String getAppVersion() {
+  /*  private String getAppVersion() {
         Context context = getApplicationContext();
         PackageManager manager = context.getPackageManager();
         PackageInfo info = null;
@@ -1582,7 +1556,7 @@ public class MainActivity extends AppCompatActivity
         String version = info.versionName;
 
         return version;
-    }
+    }*/
 
     private void checkPermissions(String... permissions) {
         List<String> needRequestPermissonList = findDeniedPermissions(permissions);

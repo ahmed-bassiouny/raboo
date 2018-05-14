@@ -1,5 +1,8 @@
 <resources>
+<!--
     <string name="app_name">raboo CHARGER&#174;</string>
+-->
+    <string name="app_name">Raboo Charger</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
