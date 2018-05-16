@@ -542,15 +542,15 @@ public class MainActivity extends AppCompatActivity
                     if (bluetoothConnected) {
                         chargingDischarging.setText("smart charging");
                     } else {
-                        chargingDischarging.setText("charging");
+                        chargingDischarging.setText("smart charging");
 
                     }
                 } else {
                     // chargingImage.setVisibility(View.GONE);
-                    chargingDischarging.setText("discharging");
+                    chargingDischarging.setText("SELF DISCHARGING");
                 }
                 if (bluetoothConnected) {
-                    subtitle.setText("Connected with " + getString(app_name));
+                    subtitle.setText("Connected with " + "Smart Charger");
                 } else {
                     subtitle.setText("Not Connected");
                 }
@@ -1723,16 +1723,5 @@ public class MainActivity extends AppCompatActivity
                 Log.i(TAG, "top running app is : " + topActivity);
             }
         }
-    }
-
-    private boolean hasPermission() {
-        AppOpsManager appOps = (AppOpsManager)
-                getSystemService(Context.APP_OPS_SERVICE);
-        int mode = 0;
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-            mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,
-                    android.os.Process.myUid(), getPackageName());
-        }
-        return mode == AppOpsManager.MODE_ALLOWED;
     }
 }
