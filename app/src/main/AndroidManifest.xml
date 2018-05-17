@@ -38,7 +38,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".UI.DeviceListActivity"
-            android:theme="@android:style/Theme.Dialog"
+            android:theme="@style/AppTheme.MyNoActionBar"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".UI.HelpActivity"
