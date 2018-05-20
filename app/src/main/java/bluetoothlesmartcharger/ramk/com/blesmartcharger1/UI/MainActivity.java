@@ -551,8 +551,10 @@ public class MainActivity extends AppCompatActivity
                 }
                 if (bluetoothConnected) {
                     subtitle.setText("Connected with " + "Smart Charger");
+                    batteryPercentage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.electric,0,0,0);
                 } else {
                     subtitle.setText("Not Connected");
+                    batteryPercentage.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
                 }
 
                 setChargingLevel(percentage);

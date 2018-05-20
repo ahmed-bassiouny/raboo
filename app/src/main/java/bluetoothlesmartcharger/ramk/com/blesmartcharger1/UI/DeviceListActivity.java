@@ -42,7 +42,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -83,7 +85,10 @@ public class DeviceListActivity extends Activity {
     private BluetoothLeScanner mLEScanner;
     private ScanSettings settings;
     private List<ScanFilter> filters;
-    private Button scanButton;
+    private ImageView scanButton;
+    private ImageView oops;
+    private ListView pairedListView,newDevicesListView ;
+    private TextView titlePairedDevices,titleNewDevices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +102,18 @@ public class DeviceListActivity extends Activity {
         setResult(Activity.RESULT_CANCELED);
 
         // Initialize the button to perform device discovery
-        scanButton = (Button) findViewById(R.id.button_scan);
+        scanButton = (ImageView) findViewById(R.id.refresh);
+        oops = (ImageView) findViewById(R.id.oops);
+        titlePairedDevices = (TextView) findViewById(R.id.title_paired_devices);
+        titleNewDevices = (TextView) findViewById(R.id.title_new_devices);
         scanButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
+                oops.setVisibility(View.GONE);
+                titleNewDevices.setVisibility(View.INVISIBLE);
+                titlePairedDevices.setVisibility(View.INVISIBLE);
+                pairedListView.setVisibility(View.INVISIBLE);
+                newDevicesListView.setVisibility(View.INVISIBLE);
+                Toast.makeText(DeviceListActivity.this, "Searching", Toast.LENGTH_SHORT).show();
                 doDiscovery();
                 v.setVisibility(View.GONE);
             }
@@ -114,12 +128,12 @@ public class DeviceListActivity extends Activity {
         newDevices = new ArrayList<>();
 
         // Find and set up the ListView for paired devices
-        ListView pairedListView = (ListView) findViewById(R.id.paired_devices);
+        pairedListView = (ListView) findViewById(R.id.paired_devices);
         pairedListView.setAdapter(mPairedDevicesArrayAdapter);
         pairedListView.setOnItemClickListener(mPairedDeviceClickListener);
 
         // Find and set up the ListView for newly discovered devices
-        ListView newDevicesListView = (ListView) findViewById(R.id.new_devices);
+        newDevicesListView = (ListView) findViewById(R.id.new_devices);
         newDevicesListView.setAdapter(mNewDevicesArrayAdapter);
         newDevicesListView.setOnItemClickListener(mNewDeviceClickListener);
 
@@ -141,15 +155,21 @@ public class DeviceListActivity extends Activity {
 
         // If there are paired devices, add each one to the ArrayAdapter
         if (pairedDevices1.size() > 0) {
-            findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
+            titlePairedDevices.setVisibility(View.VISIBLE);
             for (BluetoothDevice device : pairedDevices1) {
                 mPairedDevicesArrayAdapter.add(device.getName() + "\n" + device.getAddress());
                 pairedDevices.add(device);
             }
+            oops.setVisibility(View.INVISIBLE);
+            titleNewDevices.setVisibility(View.VISIBLE);
+            titlePairedDevices.setVisibility(View.VISIBLE);
+            pairedListView.setVisibility(View.VISIBLE);
+            newDevicesListView.setVisibility(View.VISIBLE);
         } else {
             String noDevices = "No Devices";
             mPairedDevicesArrayAdapter.add(noDevices);
         }
+        scanButton.performClick();
     }
 
     @Override
@@ -180,7 +200,7 @@ public class DeviceListActivity extends Activity {
         setTitle("Scanning...");
 
         // Turn on sub-title for new devices
-        findViewById(R.id.title_new_devices).setVisibility(View.VISIBLE);
+        //titleNewDevices.setVisibility(View.VISIBLE);
 
 
         // If we're already discovering, stop it
@@ -206,6 +226,11 @@ public class DeviceListActivity extends Activity {
                     if (!newDevices.contains(btDevice) && isHaveUUid) {
                         mNewDevicesArrayAdapter.add(btDevice.getName() + "\n" + btDevice.getAddress());
                         mNewDevicesArrayAdapter.notifyDataSetChanged();
+                        oops.setVisibility(View.INVISIBLE);
+                        titleNewDevices.setVisibility(View.VISIBLE);
+                        titlePairedDevices.setVisibility(View.VISIBLE);
+                        pairedListView.setVisibility(View.VISIBLE);
+                        newDevicesListView.setVisibility(View.VISIBLE);
                         newDevices.add(btDevice);
                     }
                     //connectToDevice(btDevice);
@@ -237,6 +262,11 @@ public class DeviceListActivity extends Activity {
                     if (mNewDevicesArrayAdapter.getCount() == 0) {
                         String noDevices = "No Devices Found";
                         mNewDevicesArrayAdapter.add(noDevices);
+                        oops.setVisibility(View.VISIBLE);
+                        titleNewDevices.setVisibility(View.INVISIBLE);
+                        titlePairedDevices.setVisibility(View.INVISIBLE);
+                        pairedListView.setVisibility(View.INVISIBLE);
+                        newDevicesListView.setVisibility(View.INVISIBLE);
                     }
                     scanButton.setVisibility(View.VISIBLE);
                 }
@@ -254,6 +284,11 @@ public class DeviceListActivity extends Activity {
                     if (mNewDevicesArrayAdapter.getCount() == 0) {
                         String noDevices = "No Devices Found";
                         mNewDevicesArrayAdapter.add(noDevices);
+                        oops.setVisibility(View.VISIBLE);
+                        titleNewDevices.setVisibility(View.INVISIBLE);
+                        titlePairedDevices.setVisibility(View.INVISIBLE);
+                        pairedListView.setVisibility(View.INVISIBLE);
+                        newDevicesListView.setVisibility(View.INVISIBLE);
                     }
                     scanButton.setVisibility(View.VISIBLE);
                 }
