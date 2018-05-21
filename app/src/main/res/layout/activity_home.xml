@@ -98,7 +98,7 @@
             android:drawableTop="@drawable/setting_2"
             android:text="Settings"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="10dp"
             android:textColor="#fff" />
 
         <TextView
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/help_2"
             android:text="Help"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:textColor="#fff" />
 
