@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
         android:name="android.hardware.bluetooth_le"
@@ -28,22 +29,20 @@
             android:name=".UI.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.MyNoActionBar"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.MyNoActionBar"/>
         <activity
             android:name=".UI.SettingsActivity"
-            android:theme="@style/AppTheme.MyNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.MyNoActionBar" />
         <activity
             android:name=".UI.DeviceListActivity"
-            android:theme="@style/AppTheme.MyNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.MyNoActionBar" />
         <activity
             android:name=".UI.HelpActivity"
-            android:theme="@style/AppTheme.MyNoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.MyNoActionBar" />
 
         <!-- <receiver android:name=".Background.BatteryLevelReceiver"> -->
         <!-- <intent-filter android:priority="900"> -->
@@ -107,7 +106,8 @@
             android:name=".daemon.Receiver2"
             android:process=":process2" />
 
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/AppTheme.MyNoActionBar">
             <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.MAIN" />
@@ -117,7 +117,11 @@
         </activity>
         <activity
             android:name=".ImageSliderActivity"
-            android:theme="@style/AppTheme.MyNoActionBar"/>
+            android:theme="@style/AppTheme.MyNoActionBar" />
+        <activity android:name=".WebViewActivity"
+            android:theme="@style/AppTheme.MyNoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

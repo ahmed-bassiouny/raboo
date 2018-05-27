@@ -52,6 +52,7 @@ import bluetoothlesmartcharger.ramk.com.blesmartcharger1.Global.BluetoothConnect
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.Global.Const;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.Global.SharedPreferencesUtil;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.R;
+import bluetoothlesmartcharger.ramk.com.blesmartcharger1.WebViewActivity;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.utils.L;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.utils.SpUtils;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.utils.Utils;
@@ -253,6 +254,13 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        findViewById(R.id.shop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                startActivity(intent);
             }
         });
     }
