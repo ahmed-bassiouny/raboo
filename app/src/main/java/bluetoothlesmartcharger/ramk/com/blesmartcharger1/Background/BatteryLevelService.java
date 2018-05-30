@@ -71,7 +71,7 @@ public class BatteryLevelService extends Service {
 
         Log.i("Alram Service", "Start Command");
 
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override

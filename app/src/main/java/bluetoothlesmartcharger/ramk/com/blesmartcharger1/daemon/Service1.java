@@ -155,7 +155,7 @@ public class Service1 extends Service {
         //TODO do some thing what you want..
         Log.i(TAG, "onCreate");
         initBroadCastReceiver();
-        createNotification();
+        //createNotification();
         init();
 
         cachedThreadPool = Executors.newCachedThreadPool();
@@ -169,7 +169,7 @@ public class Service1 extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         log("onStartCommand  " + isConnect());
-        SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_prefs_name), 1);
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_prefs_name), Context.MODE_PRIVATE);
         String mac = prefs.getString(getString(R.string.mac_address), "Not");
         if (!mac.equals("Not") && !mac.equals("NULL")) {
             autoConnect = true;
@@ -177,7 +177,7 @@ public class Service1 extends Service {
         }
         log(mac);
         initialize();
-        SharedPreferences batt = this.getSharedPreferences(getString(R.string.shared_prefs_name), 1);
+        SharedPreferences batt = this.getSharedPreferences(getString(R.string.shared_prefs_name), Context.MODE_PRIVATE);
         charging = batt.getInt("charging", 80);
         discharging = batt.getInt("discharging", 100);
         chargingDefault = batt.getBoolean("default_setting", false);
@@ -188,7 +188,7 @@ public class Service1 extends Service {
         }
         check = true;
 //        updateNotification("xxxxxxx");
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -765,14 +765,14 @@ public class Service1 extends Service {
             } else if (action.equals(Service1.ACTION_BATTERY_DATA_CHARGING)) {
                 charging = intent.getIntExtra("charging", 80);
                 Log.d("charging", "charging = " + charging);
-                SharedPreferences prefs = Service1.this.getSharedPreferences(getString(R.string.shared_prefs_name), 1);
+                SharedPreferences prefs = Service1.this.getSharedPreferences(getString(R.string.shared_prefs_name), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("charging", charging);
                 editor.commit();
             } else if (action.equals(Service1.ACTION_BATTERY_DATA_DISCHARGING)) {
                 discharging = intent.getIntExtra("discharging", 100);
                 Log.d("discharging", "discharging = " + discharging);
-                SharedPreferences prefs = Service1.this.getSharedPreferences(getString(R.string.shared_prefs_name), 1);
+                SharedPreferences prefs = Service1.this.getSharedPreferences(getString(R.string.shared_prefs_name), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("discharging", discharging);
                 editor.commit();
@@ -783,7 +783,7 @@ public class Service1 extends Service {
                     charging = 80;
                     discharging = 100;
                 } else {
-                    SharedPreferences batt = context.getSharedPreferences(getString(R.string.shared_prefs_name), 1);
+                    SharedPreferences batt = context.getSharedPreferences(getString(R.string.shared_prefs_name), Context.MODE_PRIVATE);
                     charging = batt.getInt("charging", 80);
                     discharging = batt.getInt("discharging", 100);
                 }

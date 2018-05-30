@@ -2,7 +2,9 @@ package bluetoothlesmartcharger.ramk.com.blesmartcharger1.UI;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.AppOpsManager;
+import android.app.NotificationManager;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.bluetooth.BluetoothAdapter;
@@ -53,6 +55,7 @@ import bluetoothlesmartcharger.ramk.com.blesmartcharger1.Global.Const;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.Global.SharedPreferencesUtil;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.R;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.WebViewActivity;
+import bluetoothlesmartcharger.ramk.com.blesmartcharger1.daemon.Service1;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.utils.L;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.utils.SpUtils;
 import bluetoothlesmartcharger.ramk.com.blesmartcharger1.utils.Utils;
