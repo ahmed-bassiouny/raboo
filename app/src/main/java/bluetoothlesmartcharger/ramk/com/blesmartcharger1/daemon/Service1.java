@@ -155,7 +155,7 @@ public class Service1 extends Service {
         //TODO do some thing what you want..
         Log.i(TAG, "onCreate");
         initBroadCastReceiver();
-        //createNotification();
+        createNotification();
         init();
 
         cachedThreadPool = Executors.newCachedThreadPool();
@@ -663,6 +663,7 @@ public class Service1 extends Service {
         //通知内容
         builder.setContentText("");
         builder.setSmallIcon(R.drawable.app_icon);
+
         //设置为不可清除模式
 //        builder.setOngoing(false);
         Intent intentNotification = new Intent(this, MainActivity.class);
@@ -677,7 +678,7 @@ public class Service1 extends Service {
 //        mNotificationManager.notify(1, notification);
         //启动到前台
         L.i(TAG, "startForeground.............. ");
-        startForeground(1, notification);
+        startForeground(1, null);
     }
 
     public void updateNotification(String text) {
