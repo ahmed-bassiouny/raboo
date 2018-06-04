@@ -15,8 +15,8 @@ android {
         applicationId "bluetoothlesmartcharger.ramk.com.blesmartcharger1"
         minSdkVersion 18
         targetSdkVersion 23
-        versionCode 46
-        versionName "4.6"
+        versionCode 47
+        versionName "4.7"
         signingConfig signingConfigs.config
     }
     buildTypes {

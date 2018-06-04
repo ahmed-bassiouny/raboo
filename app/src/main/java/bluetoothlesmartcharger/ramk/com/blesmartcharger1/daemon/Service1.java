@@ -678,7 +678,7 @@ public class Service1 extends Service {
 //        mNotificationManager.notify(1, notification);
         //启动到前台
         L.i(TAG, "startForeground.............. ");
-        startForeground(1, null);
+       // startForeground(1, null);
     }
 
     public void updateNotification(String text) {
