@@ -9,12 +9,12 @@ android {
             storePassword 'Raboo1'
         }
     }
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "bluetoothlesmartcharger.ramk.com.blesmartcharger1"
         minSdkVersion 18
-        targetSdkVersion 23
+        targetSdkVersion 28
         versionCode 47
         versionName "4.7"
         signingConfig signingConfigs.config
@@ -45,7 +45,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.1.0'
     testCompile 'junit:junit:4.12'
     compile 'com.orhanobut:logger:1.15'
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    compile 'com.android.support:design:28.0.0'
     compile project(':LibMarsdaemon')
 }
